@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   detailsContainer: {
     borderWidth: StyleSheet.hairlineWidth,
     borderTopWidth: 0,
-    borderColor: "#D3D3D3",
+    borderColor: theme["color-gray"],
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
     padding: 5,
