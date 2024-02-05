@@ -11,4 +11,6 @@ export type IProperty = {
     state: string;
     zip: number;
     tags: string[];
+    lat: number;
+    lng: number;
 }
