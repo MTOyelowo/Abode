@@ -1,20 +1,60 @@
-import { Tabs } from "expo-router";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-
-import * as eva from "@eva-design/eva";
-import { ApplicationProvider } from "@ui-kitten/components";
-import { theme } from "../../../theme";
-import { Provider } from "react-redux";
-import store, { RootState } from "../../utils/redux/store";
 import { useSelector } from "react-redux";
-import TabsLayoutComponent from "./TabsLayoutComponent";
+import { RootState } from "../../utils/redux/store";
 
-export default function TabsLayout() {
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Tabs } from "expo-router";
+import { theme } from "../../../theme";
+
+export default function TabLayout() {
+  const tabShown = useSelector((state: RootState) => state.tab.tabShown);
   return (
-    <Provider store={store}>
-      <ApplicationProvider {...eva} theme={theme}>
-        <TabsLayoutComponent />
-      </ApplicationProvider>
-    </Provider>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: theme["color-primary-500"],
+        tabBarStyle: { height: 55 },
+        tabBarHideOnKeyboard: true,
+      }}
+    >
+      <Tabs.Screen
+        name="search"
+        options={{
+          tabBarLabel: "Search",
+          tabBarStyle: { display: tabShown === true ? "flex" : "none" },
+          title: "Search",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons size={28} name="magnify" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="saved"
+        options={{
+          tabBarLabel: "Saved",
+          title: "Saved",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              size={28}
+              name="heart-outline"
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="account"
+        options={{
+          tabBarLabel: "Account",
+          title: "Account",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              size={28}
+              name="account-circle-outline"
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

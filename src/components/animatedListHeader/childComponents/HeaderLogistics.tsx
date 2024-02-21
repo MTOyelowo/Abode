@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text } from "@ui-kitten/components";
 import { theme } from "../../../../theme";
 import { LISTMARGIN } from "../../../../constants";
+import { useDispatch } from "react-redux";
 
 const HeaderLogisticsButton = ({
   onPress,
@@ -17,6 +18,7 @@ const HeaderLogisticsButton = ({
   label: string;
   style?: any;
 }) => {
+  const dispatch = useDispatch();
   return (
     <TouchableOpacity onPress={onPress}>
       <Row style={{ alignItems: "center", gap: 4 }}>
@@ -34,7 +36,7 @@ const HeaderLogisticsButton = ({
     </TouchableOpacity>
   );
 };
-
+ 
 const HeaderLogistics = ({
   mapShown,
   setMapShown,

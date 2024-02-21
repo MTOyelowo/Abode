@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View, ViewStyle } from "react-native";
 import React from "react";
 
-const Row = ({ children, style }: { children: any; style?: ViewStyle }) => {
+const Row = ({
+  children,
+  style,
+}: {
+  children: any;
+  style?: ViewStyle | ViewStyle[];
+}) => {
   return <View style={[styles.container, style]}>{children}</View>;
 };
 

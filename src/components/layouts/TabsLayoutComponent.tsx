@@ -12,6 +12,7 @@ export default function TabsLayoutComponent() {
         headerShown: false,
         tabBarActiveTintColor: theme["color-primary-500"],
         tabBarStyle: { height: 55 },
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tabs.Screen

@@ -4,20 +4,25 @@ import { theme } from "../../../../theme";
 import Row from "../../core/Row";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text } from "@ui-kitten/components";
+import { useRouter } from "expo-router";
 
-const HeaderInput = () => {
+const HeaderInput = ({ location }: { location: string }) => {
+  const router = useRouter();
+
+  const openModal = () => {
+    // dispatch(toggleTabShown());
+    router.push("/findLocations");
+  };
+
   return (
-    <TouchableOpacity
-      onPress={() => console.warn("Touchable opacity")}
-      style={styles.searchInputContainer}
-    >
+    <TouchableOpacity onPress={openModal} style={styles.searchInputContainer}>
       <Row style={styles.searchInputRow}>
         <MaterialCommunityIcons
           name="magnify"
           color={theme["color-primary-500"]}
           size={28}
         />
-        <Text>Find a Location</Text>
+        <Text>{location}</Text>
       </Row>
     </TouchableOpacity>
   );

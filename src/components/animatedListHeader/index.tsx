@@ -11,10 +11,12 @@ const AnimatedListHeader = ({
   scrollAnimation,
   mapShown,
   setMapShown,
+  location,
 }: {
   scrollAnimation: Animated.Value;
   mapShown: boolean;
   setMapShown: (bool: boolean) => void;
+  location: string;
 }) => {
   const [offsetAnimation] = useState(new Animated.Value(0));
   const [clampedScroll, setClampedScroll] = useState(
@@ -65,7 +67,7 @@ const AnimatedListHeader = ({
       ]}
     >
       <View style={styles.headerContainer}>
-        <HeaderInput />
+        <HeaderInput location={location} />
         <HeaderFilterButtons />
       </View>
 

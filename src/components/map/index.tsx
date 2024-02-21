@@ -5,27 +5,37 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useRef, useState } from "react";
-import MapView from "react-native-maps";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import MapView, { Region } from "react-native-maps";
 import { IProperty } from "../../../types/property";
 import MapMarker from "./childComponents/MapMarker";
 import { theme } from "../../../theme";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Card from "../card";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTabShown } from "../../utils/redux/features/tabDisplaySlice";
+import {
+  setTabShown,
+  toggleTabShown,
+} from "../../utils/redux/features/tabDisplaySlice";
 import { RootState } from "../../utils/redux/store";
 
-const Map = ({ properties }: { properties: IProperty[] }) => {
+const Map = ({
+  properties,
+  mapRef,
+  initialRegion,
+}: {
+  properties: IProperty[];
+  mapRef: MutableRefObject<MapView | null>;
+  initialRegion?: Region | undefined;
+}) => {
   const dispatch = useDispatch();
   const tabShown = useSelector((state: RootState) => state.tab.tabShown);
 
-  const mapRef = useRef<MapView | null>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const unFocusProperty = () => {
     setActiveIndex(-1);
-    dispatch(toggleTabShown());
+    dispatch(setTabShown(true));
   };
 
   const handleMapPress = () => {
@@ -45,8 +55,11 @@ const Map = ({ properties }: { properties: IProperty[] }) => {
     }
 
     setActiveIndex(index);
-    tabShown === true ? dispatch(toggleTabShown()) : null;
   };
+
+  useEffect(() => {
+    dispatch(setTabShown(false));
+  }, []);
 
   return (
     <View>
@@ -55,6 +68,7 @@ const Map = ({ properties }: { properties: IProperty[] }) => {
         userInterfaceStyle="light"
         ref={mapRef}
         onPress={handleMapPress}
+        initialRegion={initialRegion ? initialRegion : undefined}
       >
         {properties.map((item, index) => (
           <MapMarker
