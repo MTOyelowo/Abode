@@ -10,7 +10,7 @@ import { Input, Button, Text } from "@ui-kitten/components";
 
 import { useState } from "react";
 
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "react-query";
 import { Location } from "../../types/locationIQ";
 import ModalHeader from "../components/ModalHeader";
 import { useRouter } from "expo-router";

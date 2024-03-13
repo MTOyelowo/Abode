@@ -1,6 +1,14 @@
+import { IApartment } from "./apartment";
+import { IPet } from "./pet";
+import { IScore } from "./score";
+import { IReview } from "./review";
+
+
 export type IProperty = {
     id: number;
+    unitType: string;
     images: string[];
+    about: string;
     rentLow: number;
     rentHigh: number;
     bedroomLow: number;
@@ -13,4 +21,12 @@ export type IProperty = {
     tags: string[];
     lat: number;
     lng: number;
+    pets: IPet[];
+    apartments: IApartment[];
+    features: string[];
+    phoneNumber: string;
+    website: string;
+    scores: IScore[];
+    stars: number;
+    reviews?: IReview[]
 }

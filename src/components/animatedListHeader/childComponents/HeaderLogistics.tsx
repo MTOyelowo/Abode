@@ -36,13 +36,15 @@ const HeaderLogisticsButton = ({
     </TouchableOpacity>
   );
 };
- 
+
 const HeaderLogistics = ({
   mapShown,
   setMapShown,
+  availableProperties,
 }: {
   mapShown: boolean;
   setMapShown: (bool: boolean) => void;
+  availableProperties?: number;
 }) => {
   const handleMapPress = () => {
     if (mapShown) return setMapShown(false);
@@ -58,7 +60,9 @@ const HeaderLogistics = ({
             color={theme["color-primary-500"]}
           />
           <Text category={"c1"} appearance={"hint"}>
-            12 Available
+            {availableProperties
+              ? `${availableProperties} Spaces available`
+              : `Search Spaces`}
           </Text>
         </Row>
         <TouchableOpacity onPress={() => console.warn("save")}>

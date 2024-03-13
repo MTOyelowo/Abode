@@ -12,11 +12,13 @@ const AnimatedListHeader = ({
   mapShown,
   setMapShown,
   location,
+  availableProperties,
 }: {
   scrollAnimation: Animated.Value;
   mapShown: boolean;
   setMapShown: (bool: boolean) => void;
   location: string;
+  availableProperties?: number;
 }) => {
   const [offsetAnimation] = useState(new Animated.Value(0));
   const [clampedScroll, setClampedScroll] = useState(
@@ -73,7 +75,11 @@ const AnimatedListHeader = ({
 
       <Divider style={{ backgroundColor: theme["color-gray"] }} />
 
-      <HeaderLogistics setMapShown={setMapShown} mapShown={mapShown} />
+      <HeaderLogistics
+        setMapShown={setMapShown}
+        mapShown={mapShown}
+        availableProperties={availableProperties}
+      />
     </Animated.View>
   );
 };
