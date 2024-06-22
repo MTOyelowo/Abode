@@ -23,7 +23,7 @@ const SearchScreen: FC<Props> = ({ route }) => {
   const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
   const mapRef = useRef<MapView | null>(null);
-  const [mapShown, setMapShown] = useState<boolean>(true);
+  const [mapShown, setMapShown] = useState<boolean>(false);
   const [properties, setProperties] = useState<IProperty[]>([]);
   const [location, setLocation] = useState<string | undefined>(undefined);
 

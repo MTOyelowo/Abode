@@ -44,7 +44,7 @@ const PropertyHeaderSection: FC<Props> = ({ property }) => {
         <View>
           <Text category={"c1"}>{property.street}</Text>
           <Text category={"c1"}>
-            {property.city}, ${getStateAbbrevation(property.state)} $
+            {property.city}, {getStateAbbrevation(property.state)}{" "}
             {property.zip}
           </Text>
         </View>

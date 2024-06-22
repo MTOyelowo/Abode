@@ -21,7 +21,8 @@ const CardInformation = ({ property }: { property: IProperty }) => {
         />
       </Row>
       <Text category={"c1"}>
-        {property.bedroomLow} - {property.bedroomHigh} beds
+        {property.bedroomLow === 0 ? "Studio" : property.bedroomLow} -{" "}
+        {property.bedroomHigh} beds
       </Text>
       <Text style={{ marginTop: 5 }} category={"c1"}>
         {property.name}

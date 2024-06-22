@@ -1,4 +1,10 @@
-import { Dimensions, FlatList, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 import { Divider, Text } from "@ui-kitten/components";
 import { properties } from "../../../data/properties";
 import ImageCarousel from "../../components/card/childComponents/ImageCarousel";
@@ -7,6 +13,9 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FC } from "react";
 import PropertyHeaderSection from "../../components/propertyDetailsSections/PropertyHeaderSection";
 import { theme } from "../../../theme";
+import PricingAndFloorPlanSection from "../../components/PricingAndFloorPlanSection";
+import AboutSection from "../../components/propertyDetailsSections/AboutSection";
+import ContactSection from "../../components/propertyDetailsSections/ContactSection";
 
 type Props = NativeStackScreenProps<
   RootStackParamList,
@@ -20,7 +29,28 @@ const PropertyDetailsScreen: FC<Props> = ({ route }) => {
   const propertyToShow = properties[index];
   return (
     <View style={styles.container}>
-      <FlatList
+      <ScrollView>
+        <>
+          {propertyToShow.images ? (
+            <ImageCarousel
+              images={propertyToShow.images}
+              indexShown
+              imageStyle={styles.image}
+            />
+          ) : null}
+          <View style={styles.contentContainer}>
+            <PropertyHeaderSection property={propertyToShow} />
+            <Divider style={styles.divider} />
+            <PricingAndFloorPlanSection property={propertyToShow} />
+            <Divider style={styles.divider} />
+            <AboutSection property={propertyToShow} />
+            <Divider style={styles.divider} />
+            <ContactSection property={propertyToShow} />
+            <Divider style={styles.divider} />
+          </View>
+        </>
+      </ScrollView>
+      {/* <FlatList
         data={[propertyToShow]}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
@@ -35,10 +65,14 @@ const PropertyDetailsScreen: FC<Props> = ({ route }) => {
             <View style={styles.contentContainer}>
               <PropertyHeaderSection property={item} />
               <Divider style={styles.divider} />
+              <PricingAndFloorPlanSection property={item} />
+              <Divider style={styles.divider} />
+              <AboutSection property={item} />
+              <Divider style={styles.divider} />
             </View>
           </>
         )}
-      />
+      /> */}
     </View>
   );
 };
