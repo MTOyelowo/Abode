@@ -16,11 +16,9 @@ import { theme } from "../../../theme";
 import PricingAndFloorPlanSection from "../../components/PricingAndFloorPlanSection";
 import AboutSection from "../../components/propertyDetailsSections/AboutSection";
 import ContactSection from "../../components/propertyDetailsSections/ContactSection";
+import Screen from "../../components/Screen";
 
-type Props = NativeStackScreenProps<
-  RootStackParamList,
-  "PropertyDetailsScreen"
->;
+type Props = NativeStackScreenProps<RootStackParamList, "PropertyDetails">;
 
 const PropertyDetailsScreen: FC<Props> = ({ route }) => {
   const propertyId = route.params.propertyID;
@@ -28,7 +26,7 @@ const PropertyDetailsScreen: FC<Props> = ({ route }) => {
 
   const propertyToShow = properties[index];
   return (
-    <View style={styles.container}>
+    <Screen>
       <ScrollView>
         <>
           {propertyToShow.images ? (
@@ -73,7 +71,7 @@ const PropertyDetailsScreen: FC<Props> = ({ route }) => {
           </>
         )}
       /> */}
-    </View>
+    </Screen>
   );
 };
 

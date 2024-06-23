@@ -57,7 +57,7 @@ const SavedScreen = () => {
             property={item}
             style={styles.card}
             onPress={() =>
-              navigate("PropertyDetailsScreen", {
+              navigate("PropertyDetails", {
                 propertyID: properties[activeIndex].id,
               })
             }

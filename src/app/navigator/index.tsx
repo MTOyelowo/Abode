@@ -20,6 +20,7 @@ import { theme } from "../../../theme";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
 import AccountScreen from "../screens/AccountScreen";
+import MessageScreen from "../screens/MessageScreen";
 
 export default function Navigation({
   colorScheme,
@@ -71,8 +72,13 @@ function RootNavigator() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="PropertyDetailsScreen"
+          name="PropertyDetails"
           component={PropertyDetailsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Message"
+          component={MessageScreen}
           options={{ headerShown: false }}
         />
       </Stack.Group>

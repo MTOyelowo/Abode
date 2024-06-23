@@ -5,8 +5,12 @@ import Row from "../../core/Row";
 import { Button, Text } from "@ui-kitten/components";
 import { theme } from "../../../../theme";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../../../types";
+import { callPhoneNumber } from "../../../utils/callPhoneNumber";
 
 const CardInformation = ({ property }: { property: IProperty }) => {
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <View style={styles.detailsContainer}>
       <Row style={styles.pricingContainer}>
@@ -45,14 +49,14 @@ const CardInformation = ({ property }: { property: IProperty }) => {
             width: "49%",
           }}
           size="small"
-          onPress={() => console.log("Email the property manager")}
+          onPress={() => navigate("Message", { propertyID: property.id })}
         >
           Email
         </Button>
         <Button
           style={{ width: "49%" }}
           size="small"
-          onPress={() => console.log("Call the property manager")}
+          onPress={() => callPhoneNumber(property.phoneNumber)}
         >
           Call
         </Button>

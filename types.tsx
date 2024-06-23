@@ -23,8 +23,8 @@ export type RootStackParamList = {
   SignUp: undefined;
   ForgotPassword: undefined;
   ResetPassword: { token: string };
-  PropertyDetailsScreen: { propertyID: number };
-  MessageProperty: { propertyID: number; tour?: boolean };
+  PropertyDetails: { propertyID: number };
+  Message: { propertyID: number; tour?: boolean };
   AddProperty: undefined;
   EditProperty: { propertyID: number };
   MyProperties: undefined;

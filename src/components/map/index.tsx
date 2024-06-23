@@ -155,7 +155,7 @@ const Map = ({
             property={properties[activeIndex]}
             style={styles.card}
             onPress={() =>
-              navigate("PropertyDetailsScreen", {
+              navigate("PropertyDetails", {
                 propertyID: properties[activeIndex].id,
               })
             }

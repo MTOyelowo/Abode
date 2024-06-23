@@ -104,7 +104,7 @@ const SearchScreen: FC<Props> = ({ route }) => {
                 <Card
                   property={item}
                   onPress={() =>
-                    navigate("PropertyDetailsScreen", { propertyID: item.id })
+                    navigate("PropertyDetails", { propertyID: item.id })
                   }
                 />
               )}

@@ -51,10 +51,27 @@ const ContactSection: FC<Props> = ({ property }) => {
         </Row>
       </TouchableOpacity>
       <Row style={styles.buttonRow}>
-        <Button style={styles.button} appearance="ghost" onPress={() => {}}>
+        <Button
+          style={styles.button}
+          appearance="ghost"
+          onPress={() =>
+            navigation.navigate("Message", {
+              propertyID: property.id,
+              tour: true,
+            })
+          }
+        >
           Tour
         </Button>
-        <Button style={styles.button} appearance="ghost" onPress={() => {}}>
+        <Button
+          style={styles.button}
+          appearance="ghost"
+          onPress={() =>
+            navigation.navigate("Message", {
+              propertyID: property.id,
+            })
+          }
+        >
           Message
         </Button>
       </Row>
