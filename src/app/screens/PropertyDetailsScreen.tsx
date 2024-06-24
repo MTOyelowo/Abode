@@ -20,6 +20,7 @@ import Screen from "../../components/Screen";
 import AmenitiesSection from "../../components/propertyDetailsSections/AmenitiesSection";
 import LeaseAndFeesSection from "../../components/propertyDetailsSections/LeaseAndFeesSection";
 import LocationSection from "../../components/propertyDetailsSections/LocationSection";
+import ReviewSection from "../../components/propertyDetailsSections/ReviewSection";
 
 type Props = NativeStackScreenProps<RootStackParamList, "PropertyDetails">;
 
@@ -53,6 +54,8 @@ const PropertyDetailsScreen: FC<Props> = ({ route }) => {
             <LeaseAndFeesSection property={propertyToShow} />
             <Divider style={styles.divider} />
             <LocationSection property={propertyToShow} />
+            <Divider style={styles.divider} />
+            <ReviewSection property={propertyToShow} />
           </View>
         </>
       </ScrollView>
