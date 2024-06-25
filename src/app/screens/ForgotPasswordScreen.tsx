@@ -5,9 +5,33 @@ import { Button, Input, Text } from "@ui-kitten/components";
 import * as yup from "yup";
 import { Formik } from "formik";
 import ModalHeader from "../../components/ModalHeader";
+import { useMutation } from "react-query";
+import { endpoints } from "../../../constants";
+import axios from "axios";
+import Loading from "../../components/Loading";
 
 const ForgotPasswordScreen = () => {
   const [emailSent, setEmailSent] = useState<boolean>(false);
+
+  const forgotPassword = useMutation(
+    async (email: string) => {
+      console.log(endpoints.forgotPassword, { email });
+      return axios.post(endpoints.forgotPassword, {
+        email,
+      });
+    },
+    {
+      onSuccess(data) {
+        if (data.data.emailSent) setEmailSent(true);
+      },
+      onError(error: any) {
+        alert(error?.response.data.detail);
+      },
+    }
+  );
+
+  if (forgotPassword.isLoading) return <Loading />;
+
   return (
     <KeyboardAwareScrollView bounces={false} style={styles.container}>
       <View>
@@ -40,8 +64,7 @@ const ForgotPasswordScreen = () => {
                 email: yup.string().email().required("Your email is required"),
               })}
               onSubmit={(values) => {
-                console.log("Login passing values to server", values);
-                setEmailSent(true);
+                forgotPassword.mutate(values.email);
               }}
             >
               {({

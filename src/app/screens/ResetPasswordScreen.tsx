@@ -9,11 +9,43 @@ import PasswordInput from "../../components/PasswordInput";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../types";
 import { useNavigation } from "@react-navigation/native";
+import Loading from "../../components/Loading";
+import { endpoints } from "../../../constants";
+import { useMutation } from "react-query";
+import axios from "axios";
 
 type Props = NativeStackScreenProps<RootStackParamList, "ResetPassword">;
 
-const ResetPasswordScreen: FC<Props> = (token) => {
-  const { navigate } = useNavigation();
+const ResetPasswordScreen: FC<Props> = ({ route, navigation }) => {
+  const { token } = route.params;
+
+  const resetPassword = useMutation(
+    async (password: string) => {
+      return axios.post(
+        endpoints.resetPassword,
+        { password },
+        {
+          headers: {
+            Authorization: `Bearer ${route.params.token}`,
+          },
+        }
+      );
+    },
+    {
+      onSuccess() {
+        navigation.navigate("SignIn");
+      },
+      onError(error: any) {
+        if (error.response.status === 401)
+          return alert("Invalid or Expired Token");
+
+        alert("Unable to reset password,");
+      },
+    }
+  );
+
+  if (resetPassword.isLoading) return <Loading />;
+
   return (
     <KeyboardAwareScrollView bounces={false} style={styles.container}>
       <View>
@@ -40,8 +72,7 @@ const ResetPasswordScreen: FC<Props> = (token) => {
               .required("Confirm your password"),
           })}
           onSubmit={(values) => {
-            console.log("Reset Password", values);
-            navigate("SignIn");
+            resetPassword.mutateAsync(values.password);
           }}
         >
           {({

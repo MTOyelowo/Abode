@@ -38,7 +38,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 export type RootTabParamList = {
   Search: undefined | SearchScreenParams;
   Saved: undefined;
-  AccountRoot: NavigatorScreenParams<AccountTabParamList> | undefined;
+  Account: NavigatorScreenParams<AccountTabParamList> | undefined;
 };
 
 export type AccountTabParamList = {

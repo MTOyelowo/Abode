@@ -21,6 +21,7 @@ import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
 import AccountScreen from "../screens/AccountScreen";
 import MessageScreen from "../screens/MessageScreen";
+import linking from "./LinkingConfiguration";
 
 export default function Navigation({
   colorScheme,
@@ -28,7 +29,7 @@ export default function Navigation({
   colorScheme?: ColorSchemeName;
 }) {
   return (
-    <NavigationContainer theme={DefaultTheme}>
+    <NavigationContainer linking={linking} theme={DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -121,7 +122,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="AccountRoot"
+        name="Account"
         component={AccountScreen}
         options={{
           headerShown: false,
