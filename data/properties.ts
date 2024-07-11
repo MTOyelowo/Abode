@@ -167,7 +167,7 @@ export const properties: IProperty[] = [
             {
                 body: "I really appreciate the amenities and particularly how responsive maintenance is when they break down.",
                 CreatedAt: "2022-07-09T21:56:18.422866-05:00",
-                ID: 2,
+                ID: 4,
                 propertyID: 1,
                 stars: 4,
                 title: "I really appreciate",

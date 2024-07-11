@@ -4,6 +4,7 @@ export const theme = {
   ...light,
 
   "color-gray": "#D3D3D3",
+  "color-light-gray": "#E5EAEF",
   "color-primary-100": "#EFFBDB",
   "color-primary-200": "#DDF8B9",
   "color-primary-300": "#BEEA91",

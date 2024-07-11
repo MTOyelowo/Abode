@@ -1,10 +1,10 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {NavigationContainer, DefaultTheme} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useEffect } from "react";
+import {ColorSchemeName, Pressable} from "react-native";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {useEffect} from "react";
 import {
   AccountTabParamList,
   RootStackParamList,
@@ -16,12 +16,13 @@ import SignUpScreen from "../screens/SignUpScreen";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "../screens/ResetPasswordScreen";
 import PropertyDetailsScreen from "../screens/PropertyDetailsScreen";
-import { theme } from "../../../theme";
+import {theme} from "../../../theme";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
 import AccountScreen from "../screens/AccountScreen";
 import MessageScreen from "../screens/MessageScreen";
 import linking from "./LinkingConfiguration";
+import AddPropertyScreen from "../screens/AddPropertyScreen";
 
 export default function Navigation({
   colorScheme,
@@ -43,44 +44,49 @@ function RootNavigator() {
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
 
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
+      <Stack.Group screenOptions={{presentation: "modal"}}>
         <Stack.Screen
           name="FindLocations"
           component={FindLocationsScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="SignIn"
           component={SignInScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="ForgotPassword"
           component={ForgotPasswordScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="ResetPassword"
           component={ResetPasswordScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="PropertyDetails"
           component={PropertyDetailsScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Message"
           component={MessageScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddProperty"
+          component={AddPropertyScreen}
+          options={{headerShown: false}}
         />
       </Stack.Group>
     </Stack.Navigator>
@@ -106,9 +112,7 @@ function BottomTabNavigator() {
         component={SearchScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="magnify" color={color} />
-          ),
+          tabBarIcon: ({color}) => <TabBarIcon name="magnify" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -116,7 +120,7 @@ function BottomTabNavigator() {
         component={SavedScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <TabBarIcon name="heart-outline" color={color} />
           ),
         }}
@@ -127,7 +131,7 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           tabBarLabel: "Account",
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <TabBarIcon name="account-circle-outline" color={color} />
           ),
         }}
@@ -141,6 +145,6 @@ function TabBarIcon(props: {
   color: string;
 }) {
   return (
-    <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />
+    <MaterialCommunityIcons size={30} style={{marginBottom: -3}} {...props} />
   );
 }

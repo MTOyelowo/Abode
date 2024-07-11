@@ -1,9 +1,9 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { View, StyleSheet, ViewStyle } from "react-native";
-import { Text } from "@ui-kitten/components";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {View, StyleSheet, ViewStyle} from "react-native";
+import {Text} from "@ui-kitten/components";
 
 import Row from "./core/Row";
-import { useNavigation } from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 
 const ModalHeader = ({
   xShown,
@@ -14,7 +14,7 @@ const ModalHeader = ({
   text?: string;
   style?: ViewStyle | ViewStyle[];
 }) => {
-  const { goBack } = useNavigation();
+  const {goBack} = useNavigation();
 
   if (text) {
     return (

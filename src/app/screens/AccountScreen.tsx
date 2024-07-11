@@ -1,20 +1,20 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import React from "react";
-import { Button, Text } from "@ui-kitten/components";
-import { useNavigation } from "@react-navigation/native";
-import { useAuth } from "../../../hooks/useAuth";
+import {Button, Text} from "@ui-kitten/components";
+import {useNavigation} from "@react-navigation/native";
+import {useAuth} from "../../../hooks/useAuth";
 import SignupAndSigninButtons from "../../components/SignupAndSigninButtons";
 import ButtonList from "../../components/ButtonList";
-import { theme } from "../../../theme";
+import {theme} from "../../../theme";
 
 const AccountScreen = () => {
   const navigation = useNavigation();
-  const { user, logout } = useAuth();
+  const {user, logout} = useAuth();
 
   const firstSignedOutButtons = [
     {
       label: "Add a Property",
-      onPress: () => console.log("Navigate to Add Property"),
+      onPress: () => navigation.navigate("AddProperty"),
     },
     {
       label: "View My Properties",
@@ -36,7 +36,7 @@ const AccountScreen = () => {
   const rentingButtons = [
     {
       label: "Favourite Properties",
-      onPress: () => navigation.navigate("Root", { screen: "Saved" }),
+      onPress: () => navigation.navigate("Root", {screen: "Saved"}),
     },
     {
       label: "Rental Applications",
@@ -70,7 +70,7 @@ const AccountScreen = () => {
   const rentalManagementButtons = [
     {
       label: "Add a Property",
-      onPress: () => console.log("Navigate to Add a Property"),
+      onPress: () => navigation.navigate("AddProperty"),
     },
     {
       label: "Add Apartment to Property",
@@ -117,7 +117,7 @@ const AccountScreen = () => {
           )}
         </View>
         {user ? (
-          <View style={{ gap: 20 }}>
+          <View style={{gap: 20}}>
             <ButtonList data={rentingButtons} header={"Renting Made Easy"} />
             <ButtonList data={accountButtons} header={"My Account"} />
             <ButtonList
@@ -149,22 +149,22 @@ const AccountScreen = () => {
           </>
         )}
       </ScrollView>
-      {!user ? (
-        <View style={{ gap: 10 }}>
+      {/* {!user ? (
+        <View style={{gap: 10}}>
           <Button onPress={() => navigation.navigate("ForgotPassword")}>
             Forgot Password
           </Button>
           <Button
             appearance={"ghost"}
-            style={{ borderColor: theme["color-primary-500"] }}
+            style={{borderColor: theme["color-primary-500"]}}
             onPress={() =>
-              navigation.navigate("ResetPassword", { token: "123456" })
+              navigation.navigate("ResetPassword", {token: "123456"})
             }
           >
             Reset Password
           </Button>
         </View>
-      ) : null}
+      ) : null} */}
     </View>
   );
 };
